@@ -1,5 +1,17 @@
 require("dotenv").config();
 
+
+process.on('uncaughtException', (err) => {
+  console.error('UNCAUGHT EXCEPTION:');
+  console.dir(err, { depth: null });
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('UNHANDLED REJECTION:');
+  console.dir(reason, { depth: null });
+});
+
 const app = require("./app");
 const connectDB = require("./config/db");
 const { connectRedis } = require("./config/redis");

@@ -68,8 +68,8 @@ export const ClockIcon = ({ className }: { className?: string }) => (
 
 export const BikeIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className={className}>
-     <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 18.75a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-     <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 18.75h9m-9-3h-1.5l1.125-6H13.5v6h3l2.25 3M15.75 9h5.25l1.5 6.75" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 18.75a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 18.75h9m-9-3h-1.5l1.125-6H13.5v6h3l2.25 3M15.75 9h5.25l1.5 6.75" />
   </svg>
 );
 
@@ -86,23 +86,23 @@ export const TagIcon = ({ className }: { className?: string }) => (
 );
 
 export const FacebookIcon = ({ className }: { className?: string }) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" className={className}>
-        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
-    </svg>
+  <svg fill="currentColor" viewBox="0 0 24 24" className={className}>
+    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+  </svg>
 );
 
 export const TwitterIcon = ({ className }: { className?: string }) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" className={className}>
-        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-    </svg>
+  <svg fill="currentColor" viewBox="0 0 24 24" className={className}>
+    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+  </svg>
 );
 
 export const InstagramIcon = ({ className }: { className?: string }) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" className={className}>
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="white" strokeWidth="2" fill="none"/>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" strokeWidth="2" />
-    </svg>
+  <svg fill="currentColor" viewBox="0 0 24 24" className={className}>
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke="white" strokeWidth="2" fill="none" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="white" strokeWidth="2" />
+  </svg>
 );
 
 export const UserIcon = ({ className }: { className?: string }) => (
@@ -120,5 +120,17 @@ export const EnvelopeIcon = ({ className }: { className?: string }) => (
 export const LockIcon = ({ className }: { className?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+  </svg>
+);
+
+export const HeartIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+  </svg>
+);
+
+export const AdjustmentsIcon = ({ className }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
   </svg>
 );

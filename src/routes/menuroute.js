@@ -4,33 +4,44 @@ const router = express.Router();
 const {
   createMenu,
   getMenusByRestaurant,
+  getAllMenus,
+  getMenuById,
   updateMenu,
   deleteMenu
 } = require("../controllers/menucontroller");
 
 const { protect } = require("../middleware/authmiddleware");
 const { authorize } = require("../middleware/rolemiddleware");
+const upload = require("../middleware/uploadmiddleware");
 
-// Create menu (Restaurant only)
+// CREATE MENU (with image)
 router.post(
   "/",
   protect,
   authorize("RESTAURANT"),
+  upload.single("image"),
   createMenu
 );
 
-// Get menus (Public)
+// GET ALL MENUS (public) - Browse all available food
+router.get("/all", getAllMenus);
+
+// GET MENUS (public)
 router.get("/:restaurantId", getMenusByRestaurant);
 
-// Update menu
+// GET SINGLE MENU BY ID (public)
+router.get("/item/:menuId", getMenuById);
+
+// UPDATE MENU (with optional image)
 router.patch(
   "/:menuId",
   protect,
   authorize("RESTAURANT"),
+  upload.single("image"),
   updateMenu
 );
 
-// Delete menu
+// DELETE MENU
 router.delete(
   "/:menuId",
   protect,

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { registerRestaurant } =
+const { registerRestaurant, getAllRestaurants, getMyRestaurant } =
   require("../controllers/restaurantcontroller");
 
 const { protect } =
@@ -10,12 +10,26 @@ const { protect } =
 const { authorize } =
   require("../middleware/rolemiddleware");
 
-// Restaurant registration
+const upload = require("../middleware/uploadmiddleware");
+
+// Restaurant registration (with image upload)
 router.post(
   "/register",
   protect,
   authorize("CUSTOMER"),
+  upload.single("image"),
   registerRestaurant
 );
+
+// Get MY restaurant
+router.get(
+  "/me",
+  protect,
+  authorize("RESTAURANT"),
+  getMyRestaurant
+);
+
+// Get all restaurants
+router.get("/", getAllRestaurants);
 
 module.exports = router;

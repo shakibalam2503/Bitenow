@@ -4,6 +4,11 @@ const app = express();
 const restaurantRoutes = require("./routes/restaurantroute");
 const adminRoutes = require("./routes/adminroute");
 const menuRoutes = require("./routes/menuroute");
+const orderRoutes = require("./routes/orderroute");
+const paymentRoutes = require("./routes/paymentroute");
+const deliveryRoutes = require("./routes/deliveryroute");
+const settlementRoutes = require("./routes/settlementroute");
+
 // middleware
 app.use(cors());
 app.use(express.json());
@@ -26,9 +31,14 @@ app.use((err, req, res, next) => {
     message: err.message || "Internal Server Error"
   });
 });
+
 app.use("/bitenow/restaurants", restaurantRoutes);
 app.use("/bitenow/admin", adminRoutes);
 app.use("/bitenow/menus", menuRoutes);
+app.use("/bitenow/orders", orderRoutes);
+app.use("/bitenow/payments", paymentRoutes);
+app.use("/bitenow/delivery", deliveryRoutes);
+app.use("/bitenow/settlements", settlementRoutes);
 
 
 module.exports = app;

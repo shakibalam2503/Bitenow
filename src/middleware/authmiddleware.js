@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
-const redisClient = require("../config/redis");
+const { redisClient } = require("../config/redis");
 
 exports.protect = async (req, res, next) => {
   try {
@@ -48,4 +48,15 @@ exports.protect = async (req, res, next) => {
     }
     return res.status(401).json({ message: "Not authorized" });
   }
+};
+
+exports.authorize = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return res.status(403).json({
+        message: `User role ${req.user.role} is not authorized`
+      });
+    }
+    next();
+  };
 };

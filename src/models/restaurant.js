@@ -33,6 +33,21 @@ const restaurantSchema = new mongoose.Schema(
       required: true
     },
 
+    latitude: {
+      type: Number,
+      default: null
+    },
+
+    longitude: {
+      type: Number,
+      default: null
+    },
+
+    image: {
+      type: String, // Cloudinary image URL
+      default: null
+    },
+
     status: {
       type: String,
       enum: ["PENDING", "APPROVED", "REJECTED"],

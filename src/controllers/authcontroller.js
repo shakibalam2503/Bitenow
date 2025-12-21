@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const redisClient = require("../config/redis");
+const { redisClient } = require("../config/redis");
 
 /**
  * =========================
@@ -92,12 +92,22 @@ const login = async (req, res, next) => {
       }
     );
 
+    // 5. If user is RESTAURANT, fetch restaurant details
+    let restaurant = null;
+    if (user.role === 'RESTAURANT') {
+      const Restaurant = require("../models/restaurant");
+      restaurant = await Restaurant.findOne({ owner: user._id });
+    }
+
     res.status(200).json({
       token,
       user: {
         id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
-        role: user.role
+        role: user.role,
+        restaurant: restaurant
       }
     });
   } catch (error) {

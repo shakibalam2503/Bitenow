@@ -3,7 +3,7 @@ const User = require("../models/user");
 
 const registerRestaurant = async (req, res, next) => {
   try {
-    const { name, email, phone, address } = req.body;
+    const { name, email, phone, address, latitude, longitude } = req.body;
 
     if (!name || !email || !phone || !address) {
       return res.status(400).json({
@@ -27,6 +27,9 @@ const registerRestaurant = async (req, res, next) => {
       email,
       phone,
       address,
+      latitude: latitude || null,
+      longitude: longitude || null,
+      image: req.file ? req.file.path : null,
       owner: req.user._id
     });
 
@@ -44,6 +47,39 @@ const registerRestaurant = async (req, res, next) => {
   }
 };
 
+/**
+ * GET ALL RESTAURANTS (Public)
+ */
+const getAllRestaurants = async (req, res, next) => {
+  try {
+    const restaurants = await Restaurant.find({ isActive: true });
+    res.status(200).json({
+      restaurants
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * GET MY RESTAURANT (Protected)
+ */
+const getMyRestaurant = async (req, res, next) => {
+  try {
+    const restaurant = await Restaurant.findOne({ owner: req.user._id });
+
+    if (!restaurant) {
+      return res.status(404).json({ message: "Restaurant not found for this user" });
+    }
+
+    res.status(200).json({ restaurant });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
-  registerRestaurant
+  registerRestaurant,
+  getAllRestaurants,
+  getMyRestaurant
 };

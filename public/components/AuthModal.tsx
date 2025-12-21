@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { XMarkIcon, UserIcon, EnvelopeIcon, LockIcon } from './Icons';
 
 interface AuthModalProps {
@@ -21,6 +22,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
@@ -29,7 +32,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
         const body = isLogin
             ? { email: formData.email, password: formData.password }
             : {
-                name: `${formData.firstName} ${formData.lastName}`,
+                firstName: formData.firstName,
+                lastName: formData.lastName,
                 email: formData.email,
                 password: formData.password
             };
@@ -49,8 +53,22 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
             alert(isLogin ? 'Login Successful!' : 'Registration Successful!');
             localStorage.setItem('token', data.token); // Assuming token is returned
-            if (data.user) localStorage.setItem('user', JSON.stringify(data.user));
+            if (data.user) {
+                localStorage.setItem('user', JSON.stringify(data.user));
+                if (data.user.role === 'ADMIN') {
+                    onClose();
+                    navigate('/admin-dashboard');
+                    return;
+                }
+                if (data.user.role === 'RESTAURANT') {
+                    onClose();
+                    navigate('/restaurant/dashboard');
+                    return;
+                }
+            }
+
             onClose();
+            navigate('/dashboard');
 
         } catch (error: any) {
             alert(error.message);

@@ -26,6 +26,32 @@ const menuSchema = new mongoose.Schema(
     isAvailable: {
       type: Boolean,
       default: true
+    },
+
+    image: {
+      type: String, // 👈 Cloudinary image URL
+      default: null
+    },
+
+    tags: {
+      type: [String],
+      enum: [
+        "VEGAN",
+        "VEGETARIAN",
+        "EGG",
+        "HALAL",
+        "DAIRY",
+        "NUTS",
+        "PEANUTS",
+        "PORK",
+        "GLUTEN_FREE"
+      ],
+      default: []
+    },
+
+    cuisine: {
+      type: String,
+      trim: true
     }
   },
   {
